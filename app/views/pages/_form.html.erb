@@ -1,0 +1,59 @@
+
+<%= form_for @page, :html => {:multipart => true} do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div row>
+    <div class="small-11 small-centered columns">
+      <fieldset>
+        <legend>Datei hinzufügen</legend>
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Titel</label>
+            <%= f.text_field :title %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Beschreibung</label>
+            <%= f.text_field :description %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Titel</label>
+            <%= f.select :lecture, @lectures %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Kategorie</label>
+            <%= f.select :category, Page::CATEGORIES %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Datei</label>
+            <%= f.file_field :file %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+rails g scaffold users firstname lastname course login email password_digest admin:boolean teacher:boolean student:boolean --skip-stylesheets
+
+courses
+lectures
+groups
