@@ -1,7 +1,22 @@
 class PagesController < ApplicationController
   before_filter :authorize
+  before_filter :lecture
+
+  def lecture
+    if params[:lecture].blank?
+      @lecture =  cookies[:lecture]
+      #raise cookies.to_yaml
+    else
+      @lecture = params[:lecture]
+      cookies[:lecture] = @lecture
+      #raise session.to_yaml
+    end
+    #
+  end
+
   def index
-    @pages = Page.all
+
+    @pages = Page.find_all_by_lecture(params[:lecture])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,7 +45,10 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
-    @lectures = Lecture.find(:all).collect { |l| l.title }
+    @page.user = current_user.lastname
+    @page.lecture = @lecture
+
+    #@lectures = Lecture.find(:all).collect { |l| l.title }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +58,7 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
-    @lectures = Lecture.find(:all).collect { |l| l.title }
+    #@lectures = Lecture.find(:all).collect { |l| l.title }
 
   end
 
@@ -50,7 +68,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to pages_url, notice: 'Page was successfully created.' }
+        format.html { redirect_to pages_url(:lecture => @page.lecture), notice: 'Das Dokument wurde erfolgreich eingestellt.' }
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }

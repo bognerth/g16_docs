@@ -20,6 +20,4 @@
 
 $(function(){ $(document).foundation(); });
 
-$('.datatable').dataTable({
-  "sPaginationType": "foundation"
-});
+

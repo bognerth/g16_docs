@@ -6,7 +6,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :file
       t.string :lecture
       t.string :category
-      t.integer :user_id
+      t.string :user
       t.timestamps
     end
   end

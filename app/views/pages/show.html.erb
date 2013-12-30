@@ -1,15 +1,19 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <b>Header:</b>
-  <%= @page.header %>
+  <b>Titel:</b>
+  <%= @page.title %>
 </p>
 
 <p>
-  <b>Content:</b>
-  <%= @page.content %>
+  <b>Beschreibung:</b>
+  <%= @page.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<p>
+  <b>Inhalt</b>
+  <%= @page.to_yaml %>
+  <pre>
+    <%= File.read Rails.root.join("public/#{@page.file_url}") if @page.content_type == 'text/plain' %> 
+  </pre>
+</p>
+<%= link_to 'Back', request.referer %>

@@ -31,8 +31,11 @@
 
         <div class="row">
           <div class="large-12 columns">
-            <label>Titel</label>
-            <%= f.select :lecture, @lectures %>
+            <label>Kurs</label>
+              <%#= f.select :lecture, @lectures %>
+              <%= f.hidden_field :user %>
+              <%= f.hidden_field :lecture %>
+              <%= f.text_field :lecture, :disabled => true %></strong><br />
           </div>
         </div>
 

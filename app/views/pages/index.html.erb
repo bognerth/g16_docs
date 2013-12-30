@@ -1,31 +1,40 @@
 <h3>Dokumentenliste</h3>
 
-<table>
-  <tr>
-    <th>Titel</th>
-    <th>Beschreibung</th>
-    <th>Kategorie</th>
-    <th>Kurs</th>
-    <th>Dwonload</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @pages.each do |page| %>
-  <tr>
-    <td><%= page.title %></td>
-    <td><%= page.description %></td>
-    <td><%= page.category %></td>
-    <td><%= page.lecture %></td>
-    <td><%= link_to 'D', download_page_path(page) %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="datatable">
+  <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Beschreibung</th>
+      <th>Kategorie</th>
+      <th>Kurs</th>
+      <th>Von</th>
+      <th></th>
+      <% if current_user.admin? %>
+          <th></th>
+          <th></th>
+          <th></th>
+      <% end %>
+    </tr>
+  </head>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.title %></td>
+        <td><%= page.description %></td>
+        <td><%= page.category %></td>
+        <td><%= page.lecture %></td>
+        <td><%= page.user %></td>
+        <td><%= link_to image_tag('cloud_download_16x16.png', title: "Dokument herunterladen"), download_page_path(page) %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to image_tag('document_stroke_16x16.png', title: "Dokument anzeigen"), page %></td>
+          <td><%= link_to image_tag('pen_16x16.png', title: "Dokument editieren"), edit_page_path(page) %></td>
+          <td><%= link_to image_tag('x_alt_16x16.png', title: "Dokument entfernen"), page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'Neue Datei einstellen', new_page_path %>

@@ -59,11 +59,8 @@
  
       <h5>Categories</h5>
       <ul class="side-nav">
-        <li><a href="#">News</a></li>
-        <li><a href="#">Code</a></li>
-        <li><a href="#">Design</a></li>
-        <li><a href="#">Fun</a></li>
-        <li><a href="#">Weasels</a></li>
+        <li><%= link_to "G16 Login", "http://#{ENV['ROOT_DOMAIN']}"> %></li>
+        <li><%= link_to 'Übersicht', "http://#{ENV['HOST']}?lecture=#{@lecture}" %></li>
       </ul>
  
     </aside>
@@ -85,10 +82,9 @@
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li><a href="http://www.g16hh.de/">G16 Farmsen</a></li>
+            <li><a href="http://141.91.210.14/">G16 Moodle</a></li>
+            <li><a href="https://www2.wibes.de">Wibes</a></li>
           </ul>
         </div>
       </div>
