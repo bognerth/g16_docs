@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 gem 'activeresource'
-gem 'sqlite3'
+gem 'pg'
 
 group :development do
   gem 'capistrano', '2.14.2'
