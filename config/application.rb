@@ -65,8 +65,8 @@ module G16Docs
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    # config.session_store :cookie_store,
-    #                  :key => '_g16_login_session',
-    #                  :domain => :all
+    config.session_store :cookie_store,
+                     :key => '_g16_login_session',
+                     :domain => :all
   end
 end
