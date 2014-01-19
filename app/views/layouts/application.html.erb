@@ -27,7 +27,7 @@
     <div class="small-12 columns">
       <ul class="button-group right">
         <li><%= link_to(current_user.login, "#", :class => "button") if current_user %></li>
-        <li><%= link_to "Zur Login Seite", "http://#{ENV['ROOT_DOMAIN']}", :class => "button" %></li>
+        <li><%= link_to "Zur Login Seite", ENV['ROOT_DOMAIN'], :class => "button" %></li>
       </ul>
       
         <%= image_tag('g16_logo-green.png', :size => '280x100', title: "LOGIN - G16 Farmsen") %>
@@ -59,8 +59,8 @@
  
       <h5>Categories</h5>
       <ul class="side-nav">
-        <li><%= link_to "G16 Login", "http://#{ENV['ROOT_DOMAIN']}" %></li>
-        <li><%= link_to 'Übersicht', "http://#{ENV['HOST']}?lecture=#{@lecture}" %></li>
+        <li><%= link_to "G16 Login", ENV['LOGIN_DOMAIN'] %></li>
+        <li><%= link_to 'Übersicht', "#{ENV['ACTUAL_DOMAIN']}?lecture=#{@lecture}" %></li>
       </ul>
  
     </aside>

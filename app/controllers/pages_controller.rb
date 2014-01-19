@@ -2,20 +2,7 @@ class PagesController < ApplicationController
   before_filter :authorize
   before_filter :lecture
 
-  def lecture
-    if params[:lecture].blank?
-      @lecture =  cookies[:lecture]
-      #raise cookies.to_yaml
-    else
-      @lecture = params[:lecture]
-      cookies[:lecture] = @lecture
-      #raise session.to_yaml
-    end
-    #
-  end
-
   def index
-
     @pages = Page.find_all_by_lecture(params[:lecture])
 
     respond_to do |format|
@@ -47,9 +34,6 @@ class PagesController < ApplicationController
     @page = Page.new
     @page.user = current_user.lastname
     @page.lecture = @lecture
-
-    #@lectures = Lecture.find(:all).collect { |l| l.title }
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }
@@ -59,7 +43,6 @@ class PagesController < ApplicationController
   def edit
     @page = Page.find(params[:id])
     #@lectures = Lecture.find(:all).collect { |l| l.title }
-
   end
 
 
@@ -77,8 +60,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # PUT /pages/1
-  # PUT /pages/1.json
   def update
     @page = Page.find(params[:id])
 
@@ -93,8 +74,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # DELETE /pages/1
-  # DELETE /pages/1.json
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
@@ -104,4 +83,16 @@ class PagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def lecture
+    if params[:lecture].blank?
+      @lecture =  cookies[:lecture]
+      #raise cookies.to_yaml
+    else
+      @lecture = params[:lecture]
+      cookies[:lecture] = @lecture
+      #raise session.to_yaml
+    end
+  end
+
 end

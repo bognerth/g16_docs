@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to ENV['ROOT_DOMAIN'], alert: "Loggen Sie sich mit der G16-Kennung und Passwort ein." if current_user.nil?
+    redirect_to ENV['LOGIN_DOMAIN'], alert: "#{current_user.inspect}Dokumente Autorisierung fehlgeschlagen. Loggen Sie sich mit der G16-Kennung und Passwort ein. User: #{session[:user_id]}" if current_user.nil?
   end
 end
