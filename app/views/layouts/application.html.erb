@@ -40,21 +40,22 @@
  
  
   <!-- Main Page Content and Sidebar -->
- 
+   <div class="row">
+    <div class="small-12 columns">
+      <div id="flash-message">
+        <% flash.each do |name, msg| %>
+          <div data-alert class="alert-box <%= name %> radius"><%= msg %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
- 
     <!-- Main Blog Content -->
     <div class="large-9 columns" role="content">
         <%= yield %>
     </div>
 
-
-      
-    <!-- End Main Content -->
- 
- 
-    <!-- Sidebar -->
- 
     <aside class="large-3 columns">
  
       <h5>Categories</h5>

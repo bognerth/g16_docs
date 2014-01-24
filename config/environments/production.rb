@@ -1,6 +1,6 @@
 G16Docs::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.middleware.use "CustomDomainCookie", ".g16-hh.de"
+  #config.middleware.use "CustomDomainCookie", ".g16-hh.de"
   # Code is not reloaded between requests
   config.cache_classes = true
 
