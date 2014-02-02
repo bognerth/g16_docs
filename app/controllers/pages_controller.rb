@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   before_filter :lecture
 
   def index
+    #raise $redis.hget(:current_user, @current_user.login.to_sym)
     @pages = Page.find_all_by_lecture(params[:lecture])
 
     respond_to do |format|
@@ -42,7 +43,6 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
-    #@lectures = Lecture.find(:all).collect { |l| l.title }
   end
 
 

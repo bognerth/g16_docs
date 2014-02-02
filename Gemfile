@@ -8,6 +8,9 @@ group :development do
   gem 'capistrano', '2.14.2'
 end
 
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,7 +22,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'zurb-foundation'
+  #gem 'zurb-foundation'
+  gem 'foundation-rails'
   gem 'jquery-fileupload-rails'
 end
 gem 'jquery-rails'

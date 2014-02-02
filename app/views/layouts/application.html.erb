@@ -13,10 +13,10 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Dokumente - G16-CM" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Dokumente - G16-DOCS" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+  	<%= javascript_include_tag "modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -26,7 +26,7 @@
   <div class="row">
     <div class="small-12 columns">
       <ul class="button-group right">
-        <li><%= link_to(current_user.login, "#", :class => "button") if current_user %></li>
+        <li>Eingeloggt als: <%= current_user.login %> | </li>
         <li><%= link_to "Zur Login Seite", ENV['ROOT_DOMAIN'], :class => "button" %></li>
       </ul>
       
@@ -47,30 +47,11 @@
           <div data-alert class="alert-box <%= name %> radius"><%= msg %></div>
         <% end %>
       </div>
+
+      <%= yield %>
+
     </div>
   </div>
-
-  <div class="row">
-    <!-- Main Blog Content -->
-    <div class="large-9 columns" role="content">
-        <%= yield %>
-    </div>
-
-    <aside class="large-3 columns">
- 
-      <h5>Categories</h5>
-      <ul class="side-nav">
-        <li><%= link_to "G16 Login", ENV['LOGIN_DOMAIN'] %></li>
-        <li><%= link_to 'Übersicht', "#{ENV['ACTUAL_DOMAIN']}?lecture=#{@lecture}" %></li>
-      </ul>
- 
-    </aside>
- 
-    <!-- End Sidebar -->
-  </div>
- 
-  <!-- End Main Content and Sidebar -->
- 
  
   <!-- Footer -->
  
@@ -83,6 +64,7 @@
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
+            <li><%= link_to "G16 CMS - LOGIN", ENV['ROOT_DOMAIN'] %></li>
             <li><a href="http://www.g16hh.de/">G16 Farmsen</a></li>
             <li><a href="http://141.91.210.14/">G16 Moodle</a></li>
             <li><a href="https://www2.wibes.de">Wibes</a></li>
@@ -92,9 +74,6 @@
     </div>
   </footer>
     
-    
-    
-    
-    <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>
   </body>
 </html>
