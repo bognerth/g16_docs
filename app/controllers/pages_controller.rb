@@ -4,8 +4,12 @@ class PagesController < ApplicationController
 
   def index
     #raise $redis.hget(:current_user, @current_user.login.to_sym)
-    @pages = Page.find_all_by_lecture(params[:lecture])
-
+  
+    if @current_user.admin?
+      @pages = Page.order(:lecture, :category)
+    else
+      @pages = Page.find_all_by_lecture(params[:lecture])
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pages }

@@ -26,17 +26,23 @@
   <div class="row">
     <div class="small-12 columns">
       <ul class="button-group right">
-        <li>Eingeloggt als: <%= current_user.login %> | </li>
-        <li><%= link_to "Zur Login Seite", ENV['ROOT_DOMAIN'], :class => "button" %></li>
+          <li><%= link_to "Zur Login Seite", ENV['ROOT_DOMAIN'], :class => "button tiny lightblue" %></li>
+          <li><%= link_to "Log Out #{current_user.login}", "#{ENV['ROOT_DOMAIN']}/logout", :class => "button tiny lightblue " %></li>
       </ul>
       
         <%= image_tag('g16_logo-green.png', :size => '280x100', title: "LOGIN - G16 Farmsen") %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span style="color:#e36a16; font-size:2em; border-bottom: 3px #79B578 solid;"  >Dokumente</span>
-     </div>
+    </div>
   </div>
  
-  <!-- End Nav -->
+    
+  <!-- NAV -->
+  <div class="row">
+    <div class="small-12 columns">
+      <%= render 'layouts/navigation' if current_user %>      
+    </div>
+  </div>
  
  
   <!-- Main Page Content and Sidebar -->

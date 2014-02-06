@@ -1,0 +1,56 @@
+
+        <nav class="top-bar" data-topbar >
+          <ul class="title-area">
+            <li class="name">
+              <h1><%= link_to 'G16', root_path %></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li> 
+          </ul>
+
+          <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+              <li class="active"><a href="#"></a></li>
+            </ul>
+
+            <!-- Left Nav Section -->
+            <% if current_user.admin? %> 
+              <ul class="left">
+                <li class="has-dropdown">
+                  <a href="#">User</a>
+                  <ul class="dropdown">
+                    <li><%= link_to 'Alle User', users_path %></li>
+                    <li><%= link_to 'Alle Schüler', students_path %></li>
+                    <% Course.order(:title).each do |course| %>
+                      <li><%= link_to course.title, students_path(:course => course.id) %></li>
+                    <% end %>
+                    <li><%= link_to "Schüler ohne Klasse", students_path(:course => 'blank') %></li>
+                    <li><%= link_to 'Lehrer', teachers_path %></li>
+                  </ul>
+                </li>
+                <li><%= link_to 'Klassen', courses_path %></li>
+                <li><%= link_to 'Kurse', lectures_path %></li>
+                <li><%= link_to 'Anwendungen', apps_path %></li>
+                <li><%= link_to 'Noten', valuations_path %><li>
+              </ul>
+            <% else %>
+              <ul class="left">
+                <!--
+                  <li class="has-dropdown">
+                    <a href="#">Kurse</a>
+                    <ul class="dropdown">
+                      <% current_user.student.lectures.each do |lecture| %>
+                        <% lecture.apps.each do |app| %>
+                          <li><%= link_to app.title, "http://#{app.url}?user=#{current_user.id}&lecture=#{lecture.title}" %></li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  </li>
+                -->
+              </ul>
+              <ul class="right">
+                <li class="active"><%= link_to "Zur Übersicht", root_path %></li>
+              </ul>
+            <% end %>
+          </section>
+        </nav>

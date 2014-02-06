@@ -11,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-
+  <%= f.hidden_field :user %>
   <div row>
     <div class="small-11 small-centered columns">
       <fieldset>
@@ -32,10 +32,9 @@
         <div class="row">
           <div class="large-12 columns">
             <label>Kurs</label>
-              <% if current_user.student.blank? %>
+              <% if current_user.admin? %>
                <%= f.select :lecture, Lecture.find(:all).map {|l| l.title} %>
               <% else %>
-                <%= f.hidden_field :user %>
                 <%= f.hidden_field :lecture %>
                 <%= f.text_field :lecture, :disabled => true %><br />
               <% end %>
