@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if @current_user.admin?
       @pages = Page.order(:lecture, :category)
     else
-      @pages = Page.find_all_by_lecture(params[:lecture])
+      @pages = Page.where(:lecture => params[:lecture])
     end
     respond_to do |format|
       format.html # index.html.erb

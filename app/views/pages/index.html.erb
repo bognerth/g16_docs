@@ -24,17 +24,18 @@
         <td><%= page.category %></td>
         <td><%= page.lecture %></td>
         <td><%= page.user %></td>
-        <td><%= link_to image_tag('cloud_download_16x16.png', title: "Dokument herunterladen"), download_page_path(page) %></td>
+        <td><%= link_to raw('<i class="fi-upload dark-green icon-normal"></i>'), title: "Dokument herunterladen"), download_page_path(page) %></td>
         <% if current_user.admin? %>
-          <td><%= link_to image_tag('document_stroke_16x16.png', title: "Dokument anzeigen"), page %></td>
-          <td><%= link_to image_tag('pen_16x16.png', title: "Dokument editieren"), edit_page_path(page) %></td>
-          <td><%= link_to image_tag('x_alt_16x16.png', title: "Dokument entfernen"), page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to raw('<i class="fi-eye dark-green icon-normal"></i>'), title: "Dokument anzeigen"), page %></td>
+          <td><%= link_to raw('<i class="fi-pencil dark-green icon-normal"></i>'), title: "Dokument editieren"), edit_page_path(page) %></td>
+          <td><%= link_to raw('<i class="fi-trash dark-green icon-normal"></i>'), title: "Dokument entfernen"), page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br />
+<div class="panel callout radius">
+  <h5><%= link_to 'Neue Datei einstellen', new_page_path %></h5>
+</div>
 
-<%= link_to 'Neue Datei einstellen', new_page_path %>

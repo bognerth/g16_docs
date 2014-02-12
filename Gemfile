@@ -24,6 +24,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   #gem 'zurb-foundation'
   gem 'foundation-rails'
+  gem 'foundation-icons-sass-rails'
   gem 'jquery-fileupload-rails'
 end
 gem 'jquery-rails'

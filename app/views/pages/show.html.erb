@@ -16,4 +16,10 @@
     <%= File.read Rails.root.join("public/#{@page.file_url}") if @page.content_type == 'text/plain' %> 
   </pre>
 </p>
-<%= link_to 'Back', request.referer %>
+
+<div class="panel callout radius">
+  <h5><%= link_to 'Back', request.referer %></h5>
+</div>
+
+
+
