@@ -24,11 +24,11 @@
         <td><%= page.category %></td>
         <td><%= page.lecture %></td>
         <td><%= page.user %></td>
-        <td><%= link_to raw('<i class="fi-upload dark-green icon-normal"></i>'), title: "Dokument herunterladen"), download_page_path(page) %></td>
+        <td><%= link_to raw('<i class="fi-upload dark-green icon-normal"></i>'), title: "Dokument herunterladen", download_page_path(page) %></td>
         <% if current_user.admin? %>
-          <td><%= link_to raw('<i class="fi-eye dark-green icon-normal"></i>'), title: "Dokument anzeigen"), page %></td>
-          <td><%= link_to raw('<i class="fi-pencil dark-green icon-normal"></i>'), title: "Dokument editieren"), edit_page_path(page) %></td>
-          <td><%= link_to raw('<i class="fi-trash dark-green icon-normal"></i>'), title: "Dokument entfernen"), page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to raw('<i class="fi-eye dark-green icon-normal"></i>'), title: "Dokument anzeigen", page %></td>
+          <td><%= link_to raw('<i class="fi-pencil dark-green icon-normal"></i>'), title: "Dokument editieren", edit_page_path(page) %></td>
+          <td><%= link_to raw('<i class="fi-trash dark-green icon-normal"></i>'), title: "Dokument entfernen", page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
