@@ -14,9 +14,13 @@ class ApplicationController < ActionController::Base
   def current_lecture
     if params[:lecture]
       session[:wiki_lecture] = params[:lecture]
-      @lecture = params[:lecture]
+      @current_lecture = params[:lecture]
     elsif session[:wiki_lecture]
       @current_lecture = session[:wiki_lecture]
+    elsif @current_user && @current_user.admin?
+      l = Lecture.all 
+      session[:wiki_lecture] = l[0].id
+      @current_lecture = l[0].id
     else
       redirect_to ENV['ROOT_DOMAIN'], alert: "Der Kurs ist nicht angegeben." 
     end

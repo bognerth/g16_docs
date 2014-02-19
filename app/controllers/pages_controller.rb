@@ -6,9 +6,9 @@ class PagesController < ApplicationController
     #raise $redis.hget(:current_user, @current_user.login.to_sym)
   
     if @current_user.admin?
-      @pages = Page.order(:lecture, :category)
+      @pages = Page.order(:lecture_id, :category)
     else
-      @pages = Page.where(:lecture => params[:lecture])
+      @pages = Page.where(:lecture_id => @current_lecture)
     end
     respond_to do |format|
       format.html # index.html.erb
