@@ -22,7 +22,7 @@
         <td><%= page.title %></td>
         <td><%= page.description %></td>
         <td><%= page.category %></td>
-        <td><%= page.lecture %></td>
+        <td><%= page.lecture_id %></td>
         <td><%= page.user %></td>
         <td><%= link_to raw('<i class="fi-upload dark-green icon-normal"></i>'), download_page_path(page), title: "Dokument herunterladen" %></td>
         <% if current_user.admin? %>

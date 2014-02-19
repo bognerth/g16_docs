@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   before_filter :authorize
-  before_filter :lecture
 
   def index
     #raise $redis.hget(:current_user, @current_user.login.to_sym)
@@ -37,8 +36,8 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
-    @page.user = current_user.lastname
-    @page.lecture = @lecture
+    @page.user = @current_user.lastname
+    @page.lecture_id = @current_lecture
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }
@@ -55,7 +54,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to pages_url(:lecture => @page.lecture), notice: 'Das Dokument wurde erfolgreich eingestellt.' }
+        format.html { redirect_to pages_url, notice: 'Das Dokument wurde erfolgreich eingestellt.' }
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }
@@ -69,7 +68,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to pages_url, notice: 'Hat geklappt.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -85,17 +84,6 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to pages_url }
       format.json { head :no_content }
-    end
-  end
-
-  def lecture
-    if params[:lecture].blank?
-      @lecture =  cookies[:lecture]
-      #raise cookies.to_yaml
-    else
-      @lecture = params[:lecture]
-      cookies[:lecture] = @lecture
-      #raise session.to_yaml
     end
   end
 

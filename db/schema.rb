@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131230140812) do
+ActiveRecord::Schema.define(:version => 20140219072443) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.string   "file"
-    t.string   "lecture"
     t.string   "category"
     t.string   "user"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "content_type", :default => "text/plain"
+    t.integer  "lecture_id"
   end
 
 end
